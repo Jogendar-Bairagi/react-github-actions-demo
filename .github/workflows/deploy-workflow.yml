@@ -1,14 +1,14 @@
 name: Deploy
-on:
-
+on: push
 jobs:
   deploy:
     runs-on: ubuntu-latest
+  
   steps:
     - name : "checkout code"
       uses: actions/checkout@v4
     - name: "aws crendentials"
-      uses: aws-actions/configure-aws-crendentials@v6
+      uses: aws-actions/configure-aws-credentials@v6
       with:
         aws-access-key: ${{secrets.ACCESS_KEY}}
         aws-secret-key: ${{secrets.SECRET_KEY}}
