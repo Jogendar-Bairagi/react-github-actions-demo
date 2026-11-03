@@ -5,7 +5,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
   steps:
-    - name : checkout code
+    - name : "checkout code"
       uses: actions/checkout@v4
     - name: "aws crendentials"
       uses: aws-actions/configure-aws-crendentials@v6
