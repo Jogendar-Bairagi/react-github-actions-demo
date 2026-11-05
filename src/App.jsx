@@ -1,16 +1,29 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
+import Sidebar from "./components/Sidebar";
+import About from "./components/About";
+import Experience from "./components/Experience";
+import Projects from "./components/Projects";
+import Skills from "./components/Skills";
+import Contact from "./components/Contact";
+import useTheme from "./hooks/useTheme";
+import useActiveSection from "./hooks/useActiveSection";
+import { nav } from "./data";
 
-function App() {
-  const [count, setCount] = useState(0)
+const ids = nav.map((n) => n.id);
 
-  return (<>
-   <h2>Hello World</h2>
-      </>
-    )
+export default function App() {
+  const [theme, toggleTheme] = useTheme();
+  const active = useActiveSection(ids);
+
+  return (
+    <div className="layout">
+      <Sidebar active={active} theme={theme} onToggle={toggleTheme} />
+      <main>
+        <About />
+        <Experience />
+        <Projects />
+        <Skills />
+        <Contact />
+      </main>
+    </div>
+  );
 }
-
-export default App
